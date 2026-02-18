@@ -1,5 +1,74 @@
 import random
 
+def mutation(mutation_probability:float, progress_toward_cure:float, infection_rate_groups: dict, mortality_rate_groups:dict ) -> tuple:
+
+    if(random.uniform(0,1) < mutation_probability):
+
+        setback = random.uniform(0.001, progress_toward_cure)
+        progress_toward_cure = max(0, progress_toward_cure-setback)
+
+        for group in infection_rate_groups:
+            change_in_infection_rate = random.uniform(random.uniform(-0.05, -0.01), random.uniform(0.01, 0.05))
+            infection_rate_groups[group] += min(max(infection_rate_groups[group] + change_in_infection_rate, 0), 1)
+
+        for group in mortality_rate_groups:
+            change_in_mortality_rate = random.uniform(random.uniform(-0.05, -0.01), random.uniform(0.01, 0.05))
+            mortality_rate_groups[group] += min(max(mortality_rate_groups[group] + change_in_mortality_rate, 0), 1)
+
+    return progress_toward_cure, infection_rate_groups, mortality_rate_groups
+
+def simulate_year(population_groups: list,
+                  infected_groups: list,
+                  death_groups: list,
+                  infection_rate_groups: list,
+                  mortality_rate_group: list,
+                  mutation_probability: float,
+                  progress_toward_cure: float,
+                  chance_of_progress_setback: float,
+                  chance_of_breakthrough: float,
+                  birth_rate: float,
+                  hospital_capacity: float,
+                  vaccination_rollout_rate: float,
+                  max_mortality_increase: float,
+                  ):
+    pass
+
+def run_universe(population_groups: list,
+                  infected_groups: list,
+                  death_groups: list,
+                  infection_rate_groups: list,
+                  mortality_rate_group: list,
+                  mutation_probability: float,
+                  progress_toward_cure: float,
+                  chance_of_progress_setback: float,
+                  chance_of_breakthrough: float,
+                  birth_rate: float,
+                  hospital_capacity: float,
+                  vaccination_rollout_rate: float,
+                  max_mortality_increase: float,
+                  simulation_per_universe: float
+                  ):
+    pass
+
+def analysis(population_groups: list,
+                  infected_groups: list,
+                  death_groups: list,
+                  infection_rate_groups: list,
+                  mortality_rate_group: list,
+                  mutation_probability: float,
+                  progress_toward_cure: float,
+                  chance_of_progress_setback: float,
+                  chance_of_breakthrough: float,
+                  birth_rate: float,
+                  hospital_capacity: float,
+                  vaccination_rollout_rate: float,
+                  max_mortality_increase: float,
+                  simulation_per_universe: float,
+                  number_of_universes: float
+                  ):
+    pass
+
+
 if __name__ == "__main__":
     # Age groups (scaled down for speed)
     # Example: children, adults, elderly
